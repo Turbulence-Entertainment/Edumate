@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "349881277485",
+    "project_id": "gurushiksha-67bb6",
+    "storage_bucket": "gurushiksha-67bb6.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:349881277485:android:f9c1c2d2e1474cdb052ca4",
+        "android_client_info": {
+          "package_name": "com.pro.gurushiksha"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "349881277485-ua0e1bdmsutse71v66a7ns5v8fu78jrd.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.pro.gurushiksha",
+            "certificate_hash": "711b0e97bf2fa7b81ea3698b54701f9cfb65cd8e"
+          }
+        },
+        {
+          "client_id": "349881277485-d847vubev1qojvpv5sjvqld3egt57ehg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyChlNZRplkmAbFSDdB_2ZCETSjm9EVaiAE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "349881277485-d847vubev1qojvpv5sjvqld3egt57ehg.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg"
+    tools:context=".Profession">
+
+    <ImageView
+        android:id="@+id/stu_image"
+        android:layout_width="250dp"
+        android:layout_height="42dp"
+        android:layout_marginTop="60dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView3"
+        app:srcCompat="@drawable/enter_block" />
+
+    <ImageView
+        android:id="@+id/teacher_ima"
+        android:layout_width="250dp"
+        android:layout_height="42dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintStart_toStartOf="@+id/stu_image"
+        app:layout_constraintTop_toBottomOf="@+id/stu_image"
+        app:srcCompat="@drawable/enter_block" />
+
+    <TextView
+        android:id="@+id/teacher"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Teacher login"
+        android:textColor="#4C4949"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@+id/teacher_ima"
+        app:layout_constraintEnd_toEndOf="@+id/teacher_ima"
+        app:layout_constraintStart_toStartOf="@+id/teacher_ima"
+        app:layout_constraintTop_toTopOf="@+id/teacher_ima" />
+
+    <ImageView
+        android:id="@+id/parent_image"
+        android:layout_width="250dp"
+        android:layout_height="42dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintStart_toStartOf="@+id/teacher_ima"
+        app:layout_constraintTop_toBottomOf="@+id/teacher_ima"
+        app:srcCompat="@drawable/enter_block" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="35dp"
+        android:layout_marginTop="30dp"
+        android:text="Welcome to"
+        android:textColor="#FF0101"
+        android:textSize="40sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Edumate"
+        android:textColor="#FFFFFF"
+        android:textSize="40sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/textView2"
+        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
+    <TextView
+        android:id="@+id/student"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Student login"
+        android:textColor="#4C4949"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@+id/stu_image"
+        app:layout_constraintEnd_toEndOf="@+id/stu_image"
+        app:layout_constraintStart_toStartOf="@+id/stu_image"
+        app:layout_constraintTop_toTopOf="@+id/stu_image" />
+
+    <TextView
+        android:id="@+id/parent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Parent login"
+        android:textColor="#4C4949"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@+id/parent_image"
+        app:layout_constraintEnd_toEndOf="@+id/parent_image"
+        app:layout_constraintStart_toStartOf="@+id/parent_image"
+        app:layout_constraintTop_toTopOf="@+id/parent_image" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
