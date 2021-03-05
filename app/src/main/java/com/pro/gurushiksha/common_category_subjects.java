@@ -13,7 +13,7 @@ public class common_category_subjects extends AppCompatActivity {
 
     public RecyclerView common_recyclerview1,common_recyclerview2,common_recyclerview3,common_recyclerview4,common_recyclerview5,common_recyclerview6,common_recyclerview7,common_recyclerview8,common_recyclerview9;
     public RecyclerView.LayoutManager common_layout_maneger1,common_layout_maneger2,common_layout_maneger3,common_layout_maneger4,common_layout_maneger5,common_layout_maneger6,common_layout_maneger7,common_layout_maneger8,common_layout_maneger9;
-    public ArrayList<CategoryProducts> categoryProductsArrayList;
+    public ArrayList<CategoryProduct_24_7> categoryProductsArrayList;
 
 
     @Override
@@ -24,30 +24,26 @@ public class common_category_subjects extends AppCompatActivity {
 
         categoryProductsArrayList=new ArrayList<>();
 
-        categoryProductsArrayList.add(new CategoryProducts("https://firebasestorage.googleapis.com/v0/b/shopping-from.appspot.com/o/Component%209.png?alt=media&token=01846811-d717-4ec7-b8e5-51d06a68df26","total"));
-        categoryProductsArrayList.add(new CategoryProducts("https://firebasestorage.googleapis.com/v0/b/shopping-from.appspot.com/o/Component%209.png?alt=media&token=01846811-d717-4ec7-b8e5-51d06a68df26","total"));
-        categoryProductsArrayList.add(new CategoryProducts("https://firebasestorage.googleapis.com/v0/b/shopping-from.appspot.com/o/Component%209.png?alt=media&token=01846811-d717-4ec7-b8e5-51d06a68df26","total"));
-        categoryProductsArrayList.add(new CategoryProducts("https://firebasestorage.googleapis.com/v0/b/shopping-from.appspot.com/o/Component%209.png?alt=media&token=01846811-d717-4ec7-b8e5-51d06a68df26","total"));
-        categoryProductsArrayList.add(new CategoryProducts("https://firebasestorage.googleapis.com/v0/b/shopping-from.appspot.com/o/Component%209.png?alt=media&token=01846811-d717-4ec7-b8e5-51d06a68df26","total"));
-        categoryProductsArrayList.add(new CategoryProducts("https://firebasestorage.googleapis.com/v0/b/shopping-from.appspot.com/o/Component%209.png?alt=media&token=01846811-d717-4ec7-b8e5-51d06a68df26","total"));
-
+        categoryProductsArrayList.add(new CategoryProduct_24_7("https://firebasestorage.googleapis.com/v0/b/gurushiksha-67bb6.appspot.com/o/Rectangle%202.png?alt=media&token=c1f5f33d-c0e2-4a08-a6c4-0b19782308f5","Born in the U.S.A"));
+        categoryProductsArrayList.add(new CategoryProduct_24_7("https://firebasestorage.googleapis.com/v0/b/gurushiksha-67bb6.appspot.com/o/Rectangle%202.png?alt=media&token=c1f5f33d-c0e2-4a08-a6c4-0b19782308f5","Born in the U.S.A"));
+        categoryProductsArrayList.add(new CategoryProduct_24_7("https://firebasestorage.googleapis.com/v0/b/gurushiksha-67bb6.appspot.com/o/Rectangle%202.png?alt=media&token=c1f5f33d-c0e2-4a08-a6c4-0b19782308f5","Born in the U.S.A"));
 
 
 
         common_recyclerview1=findViewById(R.id.common_recyclerview1);
         common_layout_maneger1=new LinearLayoutManager(common_category_subjects.this,RecyclerView.HORIZONTAL,false);
         common_recyclerview1.setLayoutManager(common_layout_maneger1);
-        CategoryAdapter categoryAdapter1=new CategoryAdapter(categoryProductsArrayList,this);
+        CategoryAdapter_24_7 categoryAdapter1=new CategoryAdapter_24_7(categoryProductsArrayList,this);
         common_recyclerview1.setAdapter(categoryAdapter1);
         categoryAdapter1.notifyDataSetChanged();
-        categoryAdapter1.setOnItemClickedLisner(new CategoryAdapter.OnItemClickLisner() {
+        categoryAdapter1.setOnItemClickedLisner(new CategoryAdapter_24_7.OnItemClickLisner() {
             @Override
             public void onItemClick(int position) {
                 Toast.makeText(common_category_subjects.this, "1"+"khela", Toast.LENGTH_SHORT).show();
             }
         });
 
-        common_recyclerview2=findViewById(R.id.common_recyclerview2);
+       /* common_recyclerview2=findViewById(R.id.common_recyclerview2);
         common_layout_maneger2=new LinearLayoutManager(common_category_subjects.this,RecyclerView.HORIZONTAL,false);
         common_recyclerview2.setLayoutManager(common_layout_maneger2);
         CategoryAdapter categoryAdapter2=new CategoryAdapter(categoryProductsArrayList,this);
@@ -169,7 +165,7 @@ public class common_category_subjects extends AppCompatActivity {
                 Toast.makeText(common_category_subjects.this, "9"+"khela", Toast.LENGTH_SHORT).show();
             }
         });
-
+*/
 
 
 

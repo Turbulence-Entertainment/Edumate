@@ -20,7 +20,10 @@ import com.google.firebase.FirebaseException;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.PhoneAuthCredential;
+import com.google.firebase.auth.PhoneAuthOptions;
 import com.google.firebase.auth.PhoneAuthProvider;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -43,6 +46,8 @@ public class MainActivity extends AppCompatActivity {
     ImageView verify_otp;
     TextView otp_text,otp_verify_text;
 
+    FirebaseAuth auth;
+    String mVerificationId;
     String id;
     String num="";
 
@@ -112,6 +117,8 @@ public class MainActivity extends AppCompatActivity {
                 otp_progress.setVisibility(View.VISIBLE);
                 num=phnumber.getText().toString();
                 request(num);
+                ////////
+               // sendVerificationCode(num);
             }
         });
 
@@ -124,6 +131,7 @@ public class MainActivity extends AppCompatActivity {
                 verify_progress_bar.setVisibility(View.VISIBLE);
 
                 try {
+
                     PhoneAuthCredential phoneAuthCredential=PhoneAuthProvider.getCredential(id,otp_v.getText().toString());
                     verify(phoneAuthCredential);
                 }catch (Exception e)
@@ -135,6 +143,9 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
+
+
+
 
     public void check()
     {
