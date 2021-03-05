@@ -20,6 +20,7 @@ import com.google.firebase.FirebaseException;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.PhoneAuthCredential;
+import com.google.firebase.auth.PhoneAuthOptions;
 import com.google.firebase.auth.PhoneAuthProvider;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -31,8 +32,9 @@ public class MainActivity extends AppCompatActivity {
 
     FirebaseAuth firebaseAuth;
     FirebaseFirestore firebaseFirestore;
-    PhoneAuthProvider.ForceResendingToken token;
+    //PhoneAuthProvider.ForceResendingToken token;
     public static String str;
+    private static final String KEY_VERIFICATION_ID = "key_verification_id";
 
     ProgressBar otp_progress,verify_progress_bar;
 
@@ -46,10 +48,15 @@ public class MainActivity extends AppCompatActivity {
     String id;
     String num="";
 
+
     @Override
     protected  void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
+
+
         title=findViewById(R.id.profession_title);
 
         Intent intent=getIntent();
@@ -128,13 +135,26 @@ public class MainActivity extends AppCompatActivity {
                     verify(phoneAuthCredential);
                 }catch (Exception e)
                 {
-                    Toast.makeText(MainActivity.this, "cant send the message "+e.getMessage(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity.this, ""+e.getMessage(), Toast.LENGTH_SHORT).show();
                 }
             }
         });
 
 
     }
+
+    @Override
+    protected void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putString(KEY_VERIFICATION_ID,id);
+    }
+
+    @Override
+    protected void onRestoreInstanceState(@NonNull Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        id= savedInstanceState.getString(KEY_VERIFICATION_ID);
+    }
+
 
     public void check()
     {
@@ -177,17 +197,56 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    PhoneAuthProvider.OnVerificationStateChangedCallbacks mCallBacks = new PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
+        @Override
+        public void onVerificationCompleted(@NonNull PhoneAuthCredential phoneAuthCredential) {
+            String code = phoneAuthCredential.getSmsCode();
+            if(code!=null){
+      //          enterOTP.setText(code);
+                // Automatic verification
+                //verifyOTP.setVisibility(View.GONE);
+                //progressBar.setVisibility(View.VISIBLE);
+                //verifyVerificationCode(code);
+            }
+        }
+
+        @Override
+        public void onVerificationFailed(@NonNull FirebaseException e) {
+            //Toast.makeText(getApplicationContext(),"Verification Failed and FirebaseException is : "+e.getMessage(),Toast.LENGTH_SHORT).show();
+        }
+
+        @Override
+        public void onCodeSent(@NonNull String s, @NonNull PhoneAuthProvider.ForceResendingToken forceResendingToken) {
+            super.onCodeSent(s, forceResendingToken);
+            id = s;
+        }
+    };
+
 
 
     public void request(String phone)
     {
-        PhoneAuthProvider.getInstance().verifyPhoneNumber(phone, 60, TimeUnit.SECONDS, this, new PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
+
+
+        PhoneAuthOptions options = PhoneAuthOptions.newBuilder(firebaseAuth)
+                .setPhoneNumber(phone)
+                .setTimeout(60L,TimeUnit.SECONDS)
+                .setActivity(this)
+                .setCallbacks(mCallBacks)
+                .build();
+        PhoneAuthProvider.verifyPhoneNumber(options);
+
+
+/*        PhoneAuthProvider.getInstance().verifyPhoneNumber(phone, 60, TimeUnit.SECONDS, this, new PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
 
             @Override
             public void onCodeSent(@NonNull String s, @NonNull PhoneAuthProvider.ForceResendingToken forceResendingToken) {
                 super.onCodeSent(s, forceResendingToken);
                 id=s;
-                token=forceResendingToken;
+
+                    Toast.makeText(MainActivity.this, "aithi problem oncode sent "+id, Toast.LENGTH_SHORT).show();
+
+               // token=forceResendingToken;
 
 
             }
@@ -199,6 +258,8 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onVerificationCompleted(@NonNull PhoneAuthCredential phoneAuthCredential) {
+               // String code = phoneAuthCredential.getSmsCode();
+                //Toast.makeText(MainActivity.this, "onVrificationComplited : "+code+"    aita asuchi", Toast.LENGTH_SHORT).show();
 
             }
 
@@ -208,7 +269,7 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(MainActivity.this, ""+e.getMessage(), Toast.LENGTH_SHORT).show();
 
             }
-        });
+        });*/
 
     }
 
